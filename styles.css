@@ -48,12 +48,16 @@ body.page {
 .hero {
   --hero-padding-inline: var(--space-l);
   --hero-padding-block: var(--space-xl);
-  --hero-glow-size: 28rem;
+  --hero-glow-size: clamp(18rem, 62vmax, 60rem);
+  --hero-glow-primary-top: calc(var(--hero-glow-size) * -0.40);
+  --hero-glow-primary-left: calc(var(--hero-glow-size) * -0.30);
+  --hero-glow-secondary-right: calc(var(--hero-glow-size) * -0.50);
+  --hero-glow-secondary-bottom: calc(var(--hero-glow-size) * -0.10);
   --hero-brand-gap: var(--space-m);
   --hero-content-gap: var(--space-l);
-  --hero-brand-width: 12rem;
-  --hero-logotype-height: 2.5rem;
-  --hero-title-size: clamp(2.5rem, 6vw, 5rem);
+  --hero-brand-width: clamp(8.5rem, 16vw, 12rem);
+  --hero-logotype-width: clamp(14rem, 34vw, 24rem);
+  --hero-title-size: clamp(2.15rem, 4.8vw, 4.1rem);
   --hero-badge-size: 0.95rem;
   --hero-footer-size: 0.75rem;
   position: relative;
@@ -62,6 +66,8 @@ body.page {
   overflow: hidden;
   padding: var(--hero-padding-block) var(--hero-padding-inline);
   background:
+    radial-gradient(circle at 28% 24%, rgba(117, 59, 168, 0.329), transparent 74%),
+    radial-gradient(circle at 70% 66%, rgba(142, 102, 28, 0.301), transparent 52%),
     radial-gradient(circle at top left, rgba(25, 140, 255, 0.14), transparent 30%),
     radial-gradient(circle at bottom right, rgba(61, 220, 132, 0.12), transparent 28%),
     linear-gradient(180deg, #040611 0%, #070c1b 45%, #040611 100%);
@@ -77,15 +83,15 @@ body.page {
 }
 
 .hero__glow--primary {
-  top: -8rem;
-  left: -6rem;
-  background: radial-gradient(circle, rgba(25, 140, 255, 0.45), transparent 65%);
+  top: var(--hero-glow-primary-top);
+  left: var(--hero-glow-primary-left);
+  background: radial-gradient(circle, rgba(25, 140, 255, 0.35), transparent 65%);
 }
 
 .hero__glow--secondary {
-  right: -8rem;
-  bottom: -8rem;
-  background: radial-gradient(circle, rgba(61, 220, 132, 0.32), transparent 65%);
+  right: var(--hero-glow-secondary-right);
+  bottom: var(--hero-glow-secondary-bottom);
+  background: radial-gradient(circle, rgba(61, 220, 132, 0.22), transparent 65%);
 }
 
 .hero__content {
@@ -111,23 +117,20 @@ body.page {
 
 .brand-mark,
 .brand-logotype {
-  border: 1px solid var(--color-border);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06)),
-    var(--color-surface);
-  box-shadow: 0 1.5rem 4rem -2rem var(--color-shadow);
+  display: block;
+  max-width: 100%;
+  filter: drop-shadow(0 1.5rem 4rem rgba(0, 0, 0, 0.3));
 }
 
 .brand-mark {
-  width: var(--hero-brand-width);
-  height: var(--hero-brand-width);
-  border-radius: 2.25rem;
+  width: clamp(9rem, 32vw, 20rem);
+  height: auto;
+  object-fit: contain;
 }
 
 .brand-logotype {
-  width: min(var(--hero-brand-width), 80vw);
-  height: var(--hero-logotype-height);
-  border-radius: var(--radius-pill);
+  width: min(var(--hero-logotype-width), 82vw);
+  height: auto;
 }
 
 .hero__headline {
@@ -144,6 +147,16 @@ body.page {
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.06em;
+}
+
+.hero__action-prompt {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 .hero__badge {
@@ -274,11 +287,6 @@ body.page {
   .hero {
     --hero-padding-inline: var(--space-m);
     --hero-padding-block: var(--space-l);
-  }
-
-  .brand-mark {
-    width: min(var(--hero-brand-width), 9rem);
-    height: min(var(--hero-brand-width), 9rem);
   }
 
   .content {
