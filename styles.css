@@ -1,0 +1,293 @@
+:root {
+  --color-background: #050816;
+  --color-background-soft: #0c1330;
+  --color-surface: rgba(14, 20, 42, 0.72);
+  --color-surface-strong: rgba(20, 28, 57, 0.9);
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-text: #f6f8ff;
+  --color-text-muted: rgba(246, 248, 255, 0.72);
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-windows: #198cff;
+  --color-android: #3ddc84;
+  --color-badge: rgba(255, 255, 255, 0.12);
+  --font-family-base: Inter, "Segoe UI", sans-serif;
+  --page-max-width: 72rem;
+  --radius-s: 1rem;
+  --radius-m: 1.5rem;
+  --radius-pill: 999px;
+  --space-2xs: 0.375rem;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+  --transition-base: 180ms ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body.page {
+  margin: 0;
+  min-width: 20rem;
+  font-family: var(--font-family-base);
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top, rgba(77, 110, 255, 0.16), transparent 30%),
+    var(--color-background);
+}
+
+.hero {
+  --hero-padding-inline: var(--space-l);
+  --hero-padding-block: var(--space-xl);
+  --hero-glow-size: 28rem;
+  --hero-brand-gap: var(--space-m);
+  --hero-content-gap: var(--space-l);
+  --hero-title-size: clamp(2.5rem, 6vw, 5rem);
+  --hero-badge-size: 0.95rem;
+  --hero-footer-size: 0.75rem;
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+  overflow: hidden;
+  padding: var(--hero-padding-block) var(--hero-padding-inline);
+  background:
+    radial-gradient(circle at top left, rgba(25, 140, 255, 0.14), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(61, 220, 132, 0.12), transparent 28%),
+    linear-gradient(180deg, #040611 0%, #070c1b 45%, #040611 100%);
+}
+
+.hero__glow {
+  position: absolute;
+  width: var(--hero-glow-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(2rem);
+  opacity: 0.65;
+}
+
+.hero__glow--primary {
+  top: -8rem;
+  left: -6rem;
+  background: radial-gradient(circle, rgba(25, 140, 255, 0.45), transparent 65%);
+}
+
+.hero__glow--secondary {
+  right: -8rem;
+  bottom: -8rem;
+  background: radial-gradient(circle, rgba(61, 220, 132, 0.32), transparent 65%);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hero-content-gap);
+  width: min(100%, 52rem);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--hero-brand-gap);
+}
+
+.brand-mark,
+.brand-logotype {
+  border: 1px solid var(--color-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06)),
+    var(--color-surface);
+  box-shadow: 0 1.5rem 4rem -2rem var(--color-shadow);
+}
+
+.brand-mark {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 2.25rem;
+}
+
+.brand-logotype {
+  width: min(18rem, 80vw);
+  height: 2.5rem;
+  border-radius: var(--radius-pill);
+}
+
+.hero__headline {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-s);
+}
+
+.hero__title {
+  margin: 0;
+  font-size: var(--hero-title-size);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xs) var(--space-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--hero-badge-size);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: var(--color-badge);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-s);
+}
+
+.download-button {
+  --download-button-bg: var(--color-surface-strong);
+  --download-button-shadow: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-width: 11.5rem;
+  padding: 0.95rem 1.3rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  color: var(--color-text);
+  text-decoration: none;
+  background: var(--download-button-bg);
+  box-shadow: 0 1rem 2rem -1.2rem var(--download-button-shadow);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    filter var(--transition-base);
+}
+
+.download-button:hover,
+.download-button:focus-visible {
+  transform: translateY(-0.125rem);
+  filter: brightness(1.05);
+}
+
+.download-button--windows {
+  --download-button-bg: linear-gradient(135deg, #198cff, #0c68d7);
+  --download-button-shadow: rgba(25, 140, 255, 0.45);
+}
+
+.download-button--android {
+  --download-button-bg: linear-gradient(135deg, #3ddc84, #169c54);
+  --download-button-shadow: rgba(61, 220, 132, 0.4);
+}
+
+.download-button__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+  flex: 0 0 auto;
+}
+
+.download-button__label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.hero__footer {
+  margin: 0;
+  font-size: var(--hero-footer-size);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.content {
+  padding: var(--space-2xl) var(--space-l);
+}
+
+.content-section {
+  --content-section-gap: var(--space-m);
+  width: min(100%, var(--page-max-width));
+  margin: 0 auto;
+}
+
+.content-section__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--content-section-gap);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  background: var(--color-surface);
+  box-shadow: 0 1.5rem 4rem -2.5rem var(--color-shadow);
+}
+
+.content-section__eyebrow,
+.content-section__title,
+.content-section__text {
+  margin: 0;
+}
+
+.content-section__eyebrow {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.content-section__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.content-section__text {
+  max-width: 48rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 40rem) {
+  .hero {
+    --hero-padding-inline: var(--space-m);
+    --hero-padding-block: var(--space-l);
+  }
+
+  .brand-mark {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .brand-logotype {
+    width: min(14rem, 78vw);
+  }
+
+  .content {
+    padding-inline: var(--space-m);
+  }
+
+  .content-section__inner {
+    padding: var(--space-l);
+  }
+}
