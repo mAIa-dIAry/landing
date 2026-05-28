@@ -4,6 +4,7 @@
   --color-surface-strong: rgba(20, 28, 57, 0.9);
   --color-border: rgba(255, 255, 255, 0.12);
   --color-text: #f6f8ff;
+  --color-text-highlight: #e3b5f2;
   --color-text-muted: rgba(246, 248, 255, 0.72);
   --color-shadow: rgba(0, 0, 0, 0.3);
   --color-windows: #198cff;
@@ -144,9 +145,13 @@ body.page {
 .hero__title {
   margin: 0;
   font-size: var(--hero-title-size);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 0.95;
   letter-spacing: -0.06em;
+}
+
+.hero__title span {
+  color: var(--color-text-highlight);
 }
 
 .hero__action-prompt {
